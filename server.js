@@ -24,11 +24,11 @@ app.get("/", function(req, res) {
 
 app.get("/:date", function(req, res) {
     var date = req.params.date;
-    
+
     if (date.isValid()) {
         res.json({
-            "unix": moment(date, "X"),
-            "natural": moment(date, "MMMM D, YYYY")
+            "unix": date.moment(date, "X"),
+            "natural": date.moment(date, "MMMM D, YYYY")
         });
     }
     else {
