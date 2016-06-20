@@ -15,9 +15,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/public', express.static(process.cwd() + '/public'));
 
+var port = process.env.PORT;   
+
 routes(app);
 api(app);
 
-app.listen(8080, function() {
-  console.log("Node.js listening on port 8080");
+app.listen(port, function() {
+  console.log("Node.js listening on port " + port);
 });
