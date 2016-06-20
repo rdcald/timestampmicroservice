@@ -22,27 +22,26 @@ app.get("/", function(req, res) {
   });
 });
 
-app.get("/:date", function(req, res) {
-    var date = req.params.date;
-    var newDate;
-    
-    if (+date === parseInt(date, 10)) {
-        newDate = moment(date, "X");
-    }
-    else {
-        newDate = moment(date, "MMMM D, YYYY");
-    }
 
-    if (newDate.isValid()) {
-        res.json({
-            "unix": date.moment(date, "X"),
-            "natural": date.moment(date, "MMMM D, YYYY")
-        });
-    }
-    else {
-        res.json({
-            "unix": null,
-            "natural": null
-        });        
-    }
+app.get('/:datestring', function(req,res) {
+  var myDate;
+  if(/^\d{8,}$/.test(req.params.datestring)) {
+    myDate = moment(req.params.datestring, "X");
+  } else {
+    myDate = moment(req.params.datestring, "MMMM D, YYYY");
+  }
+
+  if(myDate.isValid()) {
+    res.json({
+      unix: myDate.format("X"),
+      natural: myDate.format("MMMM D, YYYY")
+    });
+  } else {
+    res.json({
+      unix: null,
+      natural: null
+    });
+  }
+
+
 });
