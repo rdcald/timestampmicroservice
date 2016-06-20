@@ -11,7 +11,16 @@ app.listen(port, function() {
 });
 
 app.get("/", function(req, res) {
-    var file = path.join(__dirname, "index.html")
+    var file = path.join(__dirname, "index.html");
+    res.sendFile(file, function (err) {
+    if (err) {
+      console.log(err);
+      res.status(err.status).end();
+    }
+    else {
+      console.log('Sent:', file);
+    }
+  });
 });
 
 app.get("/:query", function(req, res) {
