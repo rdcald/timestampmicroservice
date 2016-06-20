@@ -2,7 +2,7 @@ var express = require("express");
 var moment = require("moment")
 var fs = require("fs");
 var path = require("path");
-var api = require("./app/app.js");
+var api = require("./app.js");
 var app = express();
 var port = process.env.PORT || 8080;   
 
