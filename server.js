@@ -27,23 +27,23 @@ app.get('/:date', function(req,res) {
     var date = req.params.date;
     var newDate;
     
-    if(/^\d{8,}$/.test(date)) {
+    if(+date === parseInt(date, 10)) {
         newDate = moment(date, "X");
-    } else {
+    } 
+    else {
         newDate = moment(date, "MMMM D, YYYY");
     }
 
-  if(newDate.isValid()) {
-    res.json({
-      unix: newDate.format("X"),
-      natural: newDate.format("MMMM D, YYYY")
-    });
-  } else {
-    res.json({
-      unix: null,
-      natural: null
-    });
-  }
-
-
+    if(newDate.isValid()) {
+        res.json({
+            unix: newDate.format("X"),
+            natural: newDate.format("MMMM D, YYYY")
+        });
+    } 
+    else {
+        res.json({
+            unix: null,
+            natural: null
+        });
+    }
 });
