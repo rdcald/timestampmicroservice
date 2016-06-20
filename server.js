@@ -1,7 +1,6 @@
 'use strict'
 
 var express = require('express');
-var routes = require("moment");
 var bodyParser = require("body-parser");
 
 var routes = require("./app/routes/index.js");
