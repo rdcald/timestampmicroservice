@@ -23,18 +23,20 @@ app.get("/", function(req, res) {
 });
 
 
-app.get('/:datestring', function(req,res) {
-  var myDate;
-  if(/^\d{8,}$/.test(req.params.datestring)) {
-    myDate = moment(req.params.datestring, "X");
-  } else {
-    myDate = moment(req.params.datestring, "MMMM D, YYYY");
-  }
+app.get('/:date', function(req,res) {
+    var date = req.params.date;
+    var newDate;
+    
+    if(/^\d{8,}$/.test(date)) {
+        newDate = moment(date, "X");
+    } else {
+        newDate = moment(date, "MMMM D, YYYY");
+    }
 
-  if(myDate.isValid()) {
+  if(newDate.isValid()) {
     res.json({
-      unix: myDate.format("X"),
-      natural: myDate.format("MMMM D, YYYY")
+      unix: newDate.format("X"),
+      natural: newDate.format("MMMM D, YYYY")
     });
   } else {
     res.json({
