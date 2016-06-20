@@ -24,8 +24,16 @@ app.get("/", function(req, res) {
 
 app.get("/:date", function(req, res) {
     var date = req.params.date;
+    var newDate;
+    
+    if (+date === parseInt(date, 10)) {
+        newDate = moment(date, "X");
+    }
+    else {
+        newDate = moment(date, "MMMM D, YYYY");
+    }
 
-    if (date.isValid()) {
+    if (newDate.isValid()) {
         res.json({
             "unix": date.moment(date, "X"),
             "natural": date.moment(date, "MMMM D, YYYY")
