@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "description": "base jump api",
   "main": "server.js",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdcald/timestampmicroservice.git"
+  },
   "author": "Ronnie Caldwell <rdcaldwell5705@eagle.fgcu.edu>",
   "dependencies": {
     "express": "~3.2.4",
+    "moment": "^2.13.0"
   }
 }
