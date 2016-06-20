@@ -42,7 +42,7 @@ app.get("/:query", function(req, res) {
         natty = null;
     }
         
-    res.send(JSON.stringify(dateJSON));
+    res.json(dateJSON);
 });
     
 function unixToNatty(unix) {
