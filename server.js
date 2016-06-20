@@ -11,15 +11,10 @@ app.listen(port, function() {
 
 app.get("/", function(req, res) {
     var file = path.join(__dirname, "index.html");
+    
     res.sendFile(file, function (err) {
-    if (err) {
-      console.log(err);
-      res.status(err.status).end();
-    }
-    else {
-      console.log('Sent:', file);
-    }
-  });
+        if (err) throw err;
+    });
 });
 
 
